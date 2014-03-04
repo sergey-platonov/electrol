@@ -1,8 +1,8 @@
 #!/bin/bash
 
 data_dir=/data/img/wallpapers/electrol/
-background=earth.jpg
 resolution="x1080"
+monitor=1
 
 export LC_ALL=en_US.UTF-8 
 # ELEKTRO-L server
@@ -34,9 +34,10 @@ image_url=$ftp_site/$year/$month/$day/$hour$minute/$file_name
 cd $data_dir
 # download image
 wget $image_url
-# remove old backgorund
-rm $background
+background=$year00$month00$day"_"$hour$minute".jpg"
 # add time and resize
 convert -font Courier $file_name -pointsize 200 -draw "gravity SouthWest fill grey text 0,0 '$hour:$minute $day.$month00.$year' " -resize $resolution $background
 # update backgorund
-DISPLAY=:0.0 xfdesktop --reload
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor$monitor/image-path -s $data_dir/$background
+# remove original image (~5M)
+rm -f $file_name
