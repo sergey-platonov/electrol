@@ -1,7 +1,7 @@
 #!/bin/bash
 
 data_dir=/data/img/wallpapers/electrol/
-resolution="x1080"
+resolution="1920x1080"
 monitor=0
 
 export LC_ALL=en_US.UTF-8 
