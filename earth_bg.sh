@@ -2,7 +2,7 @@
 
 data_dir=/data/img/wallpapers/electrol/
 resolution="x1080"
-monitor=1
+monitor=0
 
 export LC_ALL=en_US.UTF-8 
 # ELEKTRO-L server
@@ -13,15 +13,9 @@ year00=`date +%y`
 month=`date +%B`
 month00=`date +%m`
 day=`date +%d`
-hour=`date +%H`
-# shots late for 2 hours, usually
-let hour=(hour+22)%24
-# 
-if [ $hour -lt 10 ]; then
-	hour="0"$hour
-fi
+hour=`date +%H -d "2 hour ago"`
 minute=`date +%M`
-# add prefix zero if needed
+# minutes can be only only 00 or 30
 if [ $minute -ge 30 ]; then
    minute="30"
 else
