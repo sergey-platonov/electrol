@@ -1,8 +1,48 @@
 #!/bin/bash
 
-data_dir=/data/img/wallpapers/electrol/
+#usage=\
+#"Usage: $(basename $0) [-d <working dir>] [-r <resolution>] [-m <monitor>]\n\
+#\tscript updates XFCE wallpaper on specified monitro\n
+#params:\n
+#\tworking dir\t  - directory where images are downloaded (default value: ~)\n\
+#\tresolution\t\t - resolution to which image is beeing resized (default value: 1920x1080)\n\
+#\tmonitor\t\t    - number of monitor (default value: 0)\n"
+
 resolution="1920x1080"
 monitor=0
+data_dir=~
+
+usage=\
+"Usage: $(basename $0) -v <version> [-r <buildroot>] [-b <branch>] [-s <serverip>] [-o <outdir>]\n\
+\tscript to build given version of qml_app\n
+params:\n
+\tversion\t\t - software version\n\
+\tbuildroot\t - buildroot dir\n
+\tbranch\t\t - branch to  clone\n\
+\tserver\t\t - ip address of mercurial server\n\
+\toutdir\t\t - output directory\n"
+
+while getopts "hr:m:d:" opt; do
+  case $opt in
+    h)
+	  echo $usage
+	  exit 1
+	  ;;  
+    r)
+	  resolution=$OPTARG      
+	  ;;
+    m)
+      monitor=$OPTARG     
+      ;;
+    d)
+      data_dir=$OPTARG     
+      ;;
+    \?)
+      echo $usage
+      exit
+      ;;
+  esac
+done
 
 export LC_ALL=en_US.UTF-8 
 # ELEKTRO-L server
