@@ -3,7 +3,7 @@
 resolution="1920x1080"
 monitor=0
 data_dir=$HOME/.local/share/electrol/
-de="xfce"
+de="kde"
 
 usage=\
 "Usage: $(basename $0) [-d <pictures dir>] [-r <resolution>] [-m <monitor>] [-e <desktop environment>]\n\
@@ -41,7 +41,7 @@ done
 
 export LC_ALL=en_US.UTF-8 
 # ELEKTRO-L server
-ftp_site=ftp://electro:electro@ftp.ntsomz.ru/ELECTRO_L_2
+ftp_site=ftp://electro:electro@ntsomz.gptl.ru:2121/ELECTRO_L_2/
 # generating date information
 year=`date +%Y`
 year00=`date +%y`
